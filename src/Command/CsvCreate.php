@@ -83,11 +83,11 @@ class CsvCreate extends Command
         }
 
         $writer
-            ->setDelimiter($config->get('delimiter'))
-            ->setNewline($config->get('newline'))
-            ->setEscape($config->get('escape'))
-            ->setEnclosure($config->get('enclosure'))
-            ->setInputEncoding($config->get('input_ecoding'))
+            ->setDelimiter($config->get('delimiter', ','))
+            ->setNewline($config->get('newline', "\n"))
+            ->setEscape($config->get('escape', "\\"))
+            ->setEnclosure($config->get('enclosure', '"'))
+            ->setInputEncoding($config->get('input_ecoding', 'UTF-8'))
             ->insertOne($config->get('header'));
 
         $this->_showProfiler('Before generator');

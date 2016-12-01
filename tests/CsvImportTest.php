@@ -57,8 +57,6 @@ class CsvImportTest extends PHPUnit
 
         $tableName = $this->_config->find('db.table');
 
-        $this->_dbQuery("SELECT * FROM {$tableName} ");
-
         $this->_dbQuery("DROP TABLE IF EXISTS `{$tableName}`");
         $this->_dbQuery("CREATE TABLE `{$tableName}` (
             `created_on` DATE NOT NULL,

@@ -21,6 +21,8 @@ before_script:
 
 script:
   - make
+  - @chmod +x ./bin/csvimport
+  - ./bin/csvimport
   - make test-all
 
   # example

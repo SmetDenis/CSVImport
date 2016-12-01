@@ -2,9 +2,12 @@
 
 [![License](https://poser.pugx.org/SmetDenis/CSVImport/license)](https://packagist.org/packages/SmetDenis/CSV-Import)   [![Latest Stable Version](https://poser.pugx.org/SmetDenis/CSVImport/v/stable)](https://packagist.org/packages/SmetDenis/CSVImport) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/SmetDenis/CSVImport/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/SmetDenis/CSVImport/?branch=master)
 
+![Preview](http://llfl.ru/images/te/z1hc.png)
+
 ## How to install
 ```sh
-composer create-project smetdenis/csvimport
+composer create-project smetdenis/csvimport:1.x-dev --no-dev
+./csvimport/bin/csvimport help
 ```
 
 ## How to run
@@ -26,12 +29,17 @@ cat ./tests/fixtures/random.csv | ./bin/csvimport csv:insert    \
 
 ## Unit tests and check code style
 ```sh
+# prepare dev build
 make
+
+# Run all unit tests
 make test-all
 
+# Run tests manually
 ./bin/csvimport csv:create                  \ 
     --config=./tests/fixtures/config.php    \
-    --lines=10000 |                         \
+    --lines=10000                           \
+|                                           \
 ./bin/csvimport csv:insert                  \
     --config=./tests/fixtures/config.php    \
     -vvv

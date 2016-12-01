@@ -88,11 +88,11 @@ class CsvInsert extends Command
         $this->_showProfiler('Before init reader');
 
         $reader
-            ->setDelimiter($config->get('delimiter'))
-            ->setNewline($config->get('newline'))
-            ->setEscape($config->get('escape'))
-            ->setEnclosure($config->get('enclosure'))
-            ->setInputEncoding($config->get('input_ecoding'));
+            ->setDelimiter($config->get('delimiter', ','))
+            ->setNewline($config->get('newline', "\n"))
+            ->setEscape($config->get('escape', "\\"))
+            ->setEnclosure($config->get('enclosure', '"'))
+            ->setInputEncoding($config->get('input_ecoding', 'UTF-8'));
 
         $this->_showProfiler('After init reader');
 
