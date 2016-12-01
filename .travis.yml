@@ -1,0 +1,36 @@
+language: php
+
+services:
+  - mysql
+
+php:
+  - 5.6
+  - 7.0
+
+matrix:
+  fast_finish: true
+  include:
+    - php: 5.6
+      env: XDEBUG_OFF="yes"
+    - php: 7.0
+      env: XDEBUG_OFF="yes"
+
+before_script:
+  - if [[ $XDEBUG_OFF = yes ]]; then phpenv config-rm xdebug.ini; fi;
+  - mysql -e 'create database csv_import;'
+
+script:
+  - make
+  - make test-all
+
+  # example
+  - ./bin/csvimport csv:insert --config=./tests/fixtures/config.php --source-file=./tests/fixtures/example.csv -vvv
+  - cat ./tests/fixtures/example.csv | ./bin/csvimport csv:insert --config=./tests/fixtures/config.php -vvv
+
+  # 1.000.000 lines test
+  - ./bin/csvimport csv:create --config=./tests/fixtures/config.php --target-file=./tests/fixtures/random.csv --lines=1000000 -vvv
+  - ./bin/csvimport csv:insert --config=./tests/fixtures/config.php --source-file=./tests/fixtures/random.csv -vvv
+  - ./bin/csvimport csv:create --config=./tests/fixtures/config.php --lines=10000 | ./bin/csvimport csv:insert --config=./tests/fixtures/config.php -vvv
+
+after_success:
+  - make coveralls

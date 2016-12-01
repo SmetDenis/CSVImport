@@ -1,0 +1,46 @@
+{
+    "name"              : "smetdenis/csvimport",
+    "type"              : "project",
+    "description"       : "Simple csv import to mysql database",
+    "license"           : "MIT",
+    "keywords"          : ["csv", "import", "mysql"],
+    "minimum-stability" : "stable",
+    "authors"           : [
+        {
+            "name"  : "SmetDenis",
+            "email" : "denis@jbzoo.com",
+            "role"  : "lead"
+        }
+    ],
+    "require"           : {
+        "php"             : ">=5.6",
+        "jbzoo/utils"     : "1.x-dev",
+        "jbzoo/data"      : "^1.5",
+        "league/csv"      : "^8.1",
+        "symfony/process" : "^2.8",
+        "symfony/console" : "^2.8",
+        "jbzoo/sqlbuilder": "^1.1"
+    },
+    "require-dev"       : {
+        "jbzoo/phpunit" : "^1.9"
+    },
+    "autoload"          : {
+        "psr-4" : {
+            "SmetDenis\\CSVImport\\" : "src"
+        }
+    },
+    "bin"               : [
+        "bin/csvimport"
+    ],
+    "extra"             : {
+        "branch-alias" : {
+            "dev-master" : "1.x-dev"
+        }
+    },
+    "config"            : {
+        "optimize-autoloader" : true
+    },
+    "support"           : {
+        "issues" : "https://github.com/SmetDenis/CsvImport/issues"
+    }
+}
